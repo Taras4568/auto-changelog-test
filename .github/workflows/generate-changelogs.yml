@@ -19,16 +19,18 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Set Git identity
+        run: |
+          git config --global user.email "action@github.com"
+          git config --global user.name "GitHub Action"
+
       - name: Generate changelog
         run: npm run changelog
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-
       - name: Commit and push changelog
         run: |
-          git config --global user.email "action@github.com"
-          git config --global user.name "GitHub Action"
           git add CHANGELOG.md
           git commit -m "chore: update changelog"
           git push
