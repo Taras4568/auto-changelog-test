@@ -6,5 +6,8 @@
     { "name": "bug", "changelogTitle": "🐛 Fixes" },
     { "name": "docs", "changelogTitle": "📚 Docs" },
     { "name": "chore", "changelogTitle": "🔧 Chores" }
-  ]
+  ],
+  "changelog": {
+    "prepend": true
+  }
 }
