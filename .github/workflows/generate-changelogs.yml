@@ -1,33 +1,31 @@
 name: Generate Changelog
 
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - main
 
 jobs:
   changelog:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v3
 
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v3
         with:
-          node-version: 20
+          node-version: '20'
 
-      - name: Install auto
-        run: npm install --no-save auto
+      - name: Install dependencies
+        run: npm install
 
-      - name: Generate changelog into file
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npx auto changelog > CHANGELOG.md
+      - name: Generate changelog
+        run: npm run changelog
 
-      - name: Commit & Push changelog
+      - name: Commit and push changelog
         run: |
-          git config user.name "github-actions"
-          git config user.email "github-actions@github.com"
+          git config --global user.email "action@github.com"
+          git config --global user.name "GitHub Action"
           git add CHANGELOG.md
-          git commit -m "docs: update changelog" || echo "No changes to commit"
+          git commit -m "chore: update changelog"
           git push

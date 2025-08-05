@@ -1,5 +1,22 @@
 {
+  "name": "your-project-name",
+  "version": "0.0.0",
+  "description": "опис проєкту",
+  "main": "index.js",
+  "scripts": {
+    "release": "auto shipit",
+    "changelog": "auto changelog",
+    "version": "auto version",
+    "pr-check": "auto pr-check",
+    "label": "auto label"
+  },
   "devDependencies": {
     "auto": "^11.3.0"
+  },
+  "auto": {
+    "plugins": [
+      "npm",
+      "released"
+    ]
   }
 }
