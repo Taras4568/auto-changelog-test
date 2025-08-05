@@ -1,0 +1,10 @@
+{
+  "plugins": ["changelog"],
+  "baseBranch": "main",
+  "labels": [
+    { "name": "feature", "changelogTitle": "🚀 Features" },
+    { "name": "bug", "changelogTitle": "🐛 Fixes" },
+    { "name": "docs", "changelogTitle": "📚 Docs" },
+    { "name": "chore", "changelogTitle": "🔧 Chores" }
+  ]
+}
